@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from .views import home
+from . import views
 
+app_name="timeline"
 
 urlpatterns = [
-    url(r'$', home, name="home"),
+    url(r'$', views.home, name="home"),
 ]

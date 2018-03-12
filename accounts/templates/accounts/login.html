@@ -1,5 +1,25 @@
 <html>
     <body>
-        <h1>Welcome to Login page</h1>
+
+    <form method="POST" action="{% url 'accounts:login' %}" >
+    {% csrf_token %}
+    <h1>Log in</h1>
+    <hr>
+
+    <b>Username</b>
+    <input type="text" placeholder="Enter Username" name="username" required>
+    <br />
+    <b>Password</b>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+    <br />
+
+
+     {% if error %}
+        {{ error }}
+    {% endif %}
+    <br />
+    <input type="submit" value="Log in">
+
+</form>
     </body>
 </html>

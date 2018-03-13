@@ -25,7 +25,7 @@ def signup(request):
     if request.method == "POST":
         if request.POST["psw"] == request.POST["psw1"]:
             url = "accounts/login.html"
-            user = User.objects.create_user(request.POST["username"], , request.POST["psw"])
+            user = User.objects.create_user(username=request.POST["username"], password=request.POST["psw"])
             user.save()
             return render(request, url)
 

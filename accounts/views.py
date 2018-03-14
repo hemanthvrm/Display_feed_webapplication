@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 
-def login(request):
+def loginpage(request):
     url = "accounts/login.html"
     if request.method == "POST":
         user = authenticate(request, username=request.POST["username"], password=request.POST["psw"])
@@ -20,12 +20,12 @@ def login(request):
         return render(request, url)
 
 
-def signup(request):
+def signuppage(request):
     url = "accounts/signup.html"
     if request.method == "POST":
         if request.POST["psw"] == request.POST["psw1"]:
             url = "accounts/login.html"
-            user = User.objects.create_user(username=request.POST["username"], password=request.POST["psw"])
+            user = User.objects.create_user(request.POST["username"], password=request.POST["psw"])
             user.save()
             return render(request, url)
 

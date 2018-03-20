@@ -1,15 +1,10 @@
-<html>
-    <body>
-        <h1>Welcome to home page</h1>
-        <hr />
-        <h2>I am listening to</h2>
+<html >
+    <body >
+        <h1 > Welcome to home page < /h1 >
+        <hr / >
+        <h2 > I am listening to < /h2 >
 
-        <form method="POST" action="{% url 'timeline:post' %}" >{% csrf_token %}<input type="text" name="listeningpost"></form>
+        <form method = "POST" action = "{% url 'timeline:post' %}" > { % csrf_token % } < input type = "text" name = "listeningpost" > <input type = "submit" name = "submit" value = "Post" > </form >
 
-
-
-
-
-
-    </body>
-</html>
+    < / body >
+< / html >

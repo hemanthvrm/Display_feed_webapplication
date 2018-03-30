@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from . import models
+from .models import Post
 import requests
 
 
 def home(request):
-    return render(request, "timeline/home.html")
+    tweet = Post.objects.all()
+    print(tweet)
+    context = {
+        'tweets': tweet
+    }
+    return render(request, "timeline/home.html", context)
 
 
 @login_required
@@ -21,7 +26,7 @@ def post(request):
         user_info = request.session['user_info']
 
         if request.POST["listeningpost"]:
-            post = models.Post()
+            post = Post()
             post.author = request.user
             post.songname = request.POST["listeningpost"]
             post.created_date = timezone.datetime.now()
@@ -29,5 +34,5 @@ def post(request):
             post.author_city = user_info['country_name']
             post.save()
 
-    else:
-        return render(request, "timeline/home.html")
+    # else:
+    #     return render(request, "timeline/home.html")

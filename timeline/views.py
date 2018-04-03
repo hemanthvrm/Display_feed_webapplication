@@ -26,12 +26,14 @@ def post(request):
         user_info = request.session['user_info']
 
         if request.POST["listeningpost"]:
+            print("i am here")
             post = Post()
             post.author = request.user
             post.songname = request.POST["listeningpost"]
             post.created_date = timezone.datetime.now()
             post.author_ipaddress = user_info['ip']
             post.author_city = user_info['country_name']
+            print("i am here")
             post.save()
 
     # else:

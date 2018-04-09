@@ -9,6 +9,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     author_ipaddress = models.TextField()
     author_city = models.TextField()
+    author_country = models.TextField()
 
     def __str__(self):
         return self.songname
